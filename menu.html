@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foody | Menu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <!-- Dynamic Background Elements -->
+    <div class="hero-background"></div>
+    <div class="hero-overlay"></div>
+
+    <nav class="glass-nav">
+        <div class="logo">
+            <i class="ph-fill ph-hamburger"></i> Foody
+        </div>
+        
+        <!-- Cart Link instead of sidebar trigger -->
+        <a href="/cart" class="cart-trigger" id="cartTrigger">
+            <i class="ph ph-shopping-bag"></i>
+            <span class="cart-badge" id="cartBadge">0</span>
+        </a>
+    </nav>
+
+    <main class="container">
+        <header class="hero">
+            <h1>Cravings, delivered <span class="gradient-text">fast.</span></h1>
+            <p>Welcome, <span id="displayUserName" class="gradient-text font-bold"></span>! Explore top-tier meals below.</p>
+        </header>
+
+        <section class="menu-section">
+            <div class="section-header">
+                <h2>Today's Menu</h2>
+                <div class="filters">
+                    <button class="filter-btn active">All Items</button>
+                </div>
+            </div>
+
+            <div id="loading" class="loading-spinner">
+                <i class="ph ph-spinner-gap spin"></i> Fetching deliciousness...
+            </div>
+
+            <div class="menu-grid" id="menuGrid">
+                <!-- Cards injected here via JS -->
+                <!-- Example structure for a single card, as per the instruction: -->
+                <!--
+                <div class="menu-card">
+                    <div class="menu-img-wrapper">
+                        <img src="/static/img/${item.image}" alt="${item.item_name}">
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="card-header">
+                            <div>
+                                <h3 class="item-name">${item.item_name}</h3>
+                                <p class="restaurant-name"><i class="ph-fill ph-storefront"></i> ${item.rest_name}</p>
+                            </div>
+                            <span class="price-tag">₹${item.price}</span>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart(${item.item_id}, '${item.item_name}', ${item.price}, '${item.rest_name}')">
+                            <i class="ph-bold ph-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+                -->
+            </div>
+        </section>
+    </main>
+
+    <div id="toast" class="toast hidden">
+        <i class="ph ph-info"></i>
+        <span id="toastMsg">Notification</span>
+    </div>
+
+    <!-- Ensure session state loads correctly -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
