@@ -9,12 +9,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     const path = window.location.pathname;
 
-    if (path === '/' || path.endsWith('index.html')) {
-        initLoginPage();
-    } else if (path.endsWith('menu.html')) {
+    if (path.includes('menu.html')) {
         initMenuPage();
-    } else if (path.endsWith('cart.html')) {
+    } else if (path.includes('cart.html')) {
         initCartPage();
+    } else {
+        initLoginPage();
     }
 });
 
